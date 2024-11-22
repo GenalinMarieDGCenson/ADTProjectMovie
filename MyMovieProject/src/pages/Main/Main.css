@@ -1,0 +1,80 @@
+.Main {
+  display: flex;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+.Main .custom-container {
+  display: flex;
+  width: 100vw;
+}
+
+.Main .custom-container .outlet {
+  flex-grow: 3;
+  padding: 1rem;
+}
+
+.Main .custom-container .navigation {
+  background-color: aliceblue;
+  padding-top: 40px;
+  height: 100vh;
+}
+
+.navigation {
+  width: 130px;
+}
+
+.Main .custom-container .navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Main .custom-container .navigation ul li {
+  padding: 10px 20px;
+}
+
+.Main .custom-container .navigation ul li.active,
+.Main .custom-container .navigation ul li:hover {
+  background: #1d0f9b;
+  color: white;
+}
+
+.Main .custom-container .navigation ul li a {
+  text-decoration: none;
+}
+
+.Main .custom-container .navigation ul li.logout {
+  cursor: pointer;
+}
+
+.bg-custom {
+  background-color: #343a40;
+}
+
+.admin-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;
+  text-align: center;  
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.role {
+  margin: 0; 
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
