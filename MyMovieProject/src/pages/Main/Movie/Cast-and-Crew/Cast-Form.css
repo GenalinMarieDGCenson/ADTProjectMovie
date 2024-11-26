@@ -1,0 +1,173 @@
+
+.parent-container {
+    border-radius: 10px;
+    background-color: #838383;
+    margin-top: 10%;
+    padding: 20px;
+  }
+  
+ 
+  .cast-box {
+    background-color: gray;
+    height: 620px;
+    border-radius: 0px 5px 5px 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .Search-Box {
+    flex: auto;
+    width: 397px;
+    background-color: rgb(96, 96, 96);
+    padding: 10px;
+    text-align: center;
+    height: 580px;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .input-search-person {
+    flex: 2;
+    padding: 3px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 70%;
+  }
+  
+  .button-search {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background-color: rgb(233, 233, 233);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button-search:hover {
+    background-color: #d1d1d1;
+  }
+  
+  
+  .Cast-View-Box {
+    flex: auto;
+    width: 860px;
+    background-color: rgb(59, 59, 59);
+    padding: 10px;
+    position: relative;
+    display: flex;
+  }
+  
+  
+  .card-display-cast {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+  }
+  
+  .card-wrapper {
+    display: inline-flex;
+    flex-wrap: nowrap;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 40%;
+    margin-right: 10px;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: white;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .image-container {
+    background-color: rgb(54, 54, 54);
+    width: 100%;
+    height: 180px;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .img-cast {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .container {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .buttons-group {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+    gap: 5px;
+  }
+  
+  
+  .edit-button {
+    background-color: #00ce33;
+    color: white;
+    border-radius: 10px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .delete-button {
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+  
+  .edit-button:hover {
+    background-color: rgb(0, 177, 44);
+  }
+  
+  .delete-button:hover {
+    background-color: darkred;
+  }
+  
+  
+  .card-display-cast::-webkit-scrollbar {
+    height: 10px;
+  }
+  
+  .card-display-cast::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .card-display-cast::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .card-display-cast::-webkit-scrollbar-track {
+    background: #f0f0f0;
+  }
+  
+  
+  .no-cast {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 1.5rem;
+    color: #9f9f9f;
+  }
+  

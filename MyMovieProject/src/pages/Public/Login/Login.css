@@ -1,37 +1,122 @@
-.login-page {
-    background: url('background-image-url') no-repeat center center fixed;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-  }
-  
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .login-card {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(8px);
-    padding: 30px;
+.Login-Form {
     width: 400px;
+    height: auto;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    font-size: 24px;
-  }
-  
-  .form-control {
-    margin-bottom: 15px;
-  }
-  
-  .alert {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.Login-Form h1.text-title {
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.Login-Form p.text-description {
+    font-size: 1rem;
+    color: #3d2424;
     margin-bottom: 20px;
-  }
-  
+}
+
+.Login-Form .box-form {
+    text-align: left;
+}
+
+.Login-Form .box-form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555555;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.Login-Form .box-form input[type="text"],
+.Login-Form .box-form input[type="password"] {
+    width: calc(100% - 20px);
+    max-width: 500px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border 0.3s;
+    text-align: left;
+}
+
+.Login-Form .box-form input:focus {
+    outline: none;
+    border: 1px solid #6a11cb;
+    box-shadow: 0px 0px 8px rgba(106, 17, 203, 0.5);
+}
+
+.Login-Form .form-check {
+    text-align: left;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    display: flex;
+}
+
+.button-box-login {
+    text-align: center;
+}
+
+.Login-Form .form-check label {
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.Login-Form .btn {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.Login-Form .btn:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    transform: translateY(-3px);
+}
+
+.Login-Form .btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.Login-Form .text-center a {
+    font-size: 0.85rem;
+    color: #2575fc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.Login-Form .text-center a:hover {
+    color: #6a11cb;
+}
+
+.text-danger {
+    font-size: 0.85rem;
+    color: #ff4d4f;
+    text-align: left;
+    display: block;
+}
+
+.text-message-box {
+    width: 100%;
+    height: 40px;
+    background-color: #ffa0a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: #ff4d4f solid 1px;
+    color: #ffffff;
+}
