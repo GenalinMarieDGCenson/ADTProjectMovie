@@ -1,0 +1,177 @@
+body {
+    background-color: rgb(41, 43, 52);
+    color: white;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .main-container {
+    height: 79vh;
+    overflow: hidden;
+    overflow-y: auto;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+  }
+  
+  .main-container::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  .page-title {
+    font-size: 4.5rem;
+    text-align: center;
+    margin: 1rem 0;
+  }
+ 
+  .list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    height: 100vh;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .list-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .featured-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 5rem;
+    aspect-ratio: 11 / 4;
+    border-radius: 10px;
+    justify-content: center;
+  }
+  
+  .featured-list-container-loader {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .featured-backdrop {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .featured-movie-title {
+    font-size: 3rem;
+    font-weight: bold;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .movies-list {
+    margin-top: -55px;
+  }
+  
+  .title-movies-h1-2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0px 20px;
+    visibility: hidden;
+  }
+  
+  .img-postpath-auto {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .img-postpath-auto:hover {
+    box-shadow: 2px 4px 6px #627f98;
+  }
+ 
+  .Movies-Title-Description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 70px;
+    background-color: rgba(53, 58, 63, 0.8);
+  }
+  
+  .Title-Description-Box {
+    width: 800px;
+    margin-left: 10px;
+  }
+  
+  .overview-movies-p {
+    width: 100%;
+  }
+  
+  .PostPath-Img {
+    width: 20%;
+  }
+  
+  @media (max-width: 500px) {
+    .main-container {
+      height: 78vh;
+    }
+  
+    .featured-list-container {
+      flex-direction: column;
+      margin-bottom: 2rem;
+      height: auto;
+    }
+  
+    .featured-backdrop {
+      height: 550%;
+      background-size: cover;
+      background-position: center;
+    }
+  
+    .Movies-Title-Description {
+      padding: 20px;
+      flex-direction: column;
+    }
+  
+    .PostPath-Img {
+      width: 50%;
+      margin-bottom: 1rem;
+    }
+  
+    .Title-Description-Box {
+      width: 100%;
+      margin-left: 0;
+    }
+  
+    .img-postpath-auto {
+      width: 100%;
+      height: auto;
+    }
+  
+    .title-movies-h1-2 {
+      font-size: 1.5rem;
+      padding: 10px;
+    }
+  
+    .title-text-movie-lists {
+      font-size: 20pt;
+    }
+  
+    .movies-list {
+      margin-top: 0px;
+    }
+  }
+  

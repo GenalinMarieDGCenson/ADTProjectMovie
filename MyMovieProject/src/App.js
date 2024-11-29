@@ -10,7 +10,12 @@ import Lists from './pages/Main/Movie/Lists/Lists';
 import Form from './pages/Main/Movie/Form/Form';
 import CastForm from './pages/Main/Movie/Cast-and-Crew/Cast-Form';
 import PhotoForm from './pages/Main/Movie/Photos/Photo-Form';
-
+import VideoForm from './pages/Main/Movie/Videos/Video-Form';
+import { AuthProvider } from './utils/context/AuthContext';
+import Home from './pages/Client/Home/Home';
+import Client from './pages/Client/Client';
+import Movies from './pages/Main/Movie/Movie';
+import Movie from './pages/Client/Movie/Movie';
 
 const router = createBrowserRouter([
   {
@@ -61,7 +66,10 @@ const router = createBrowserRouter([
                 path: '/main/movies/form/:movieId/photos',
                 element: <PhotoForm />
               },
-            
+              {
+                path: '/main/movies/form/:movieId/videos',
+                element: <VideoForm />
+              },
             ]
           },
         ]
@@ -77,11 +85,11 @@ const router = createBrowserRouter([
     element: <Client />,
     children: [
       {
-        path: '',
+        path: '/home',
         element: <Home />
       },
       {
-        path: 'movie/:movieId?',
+        path: '/home/movie/:movieId?',
         element: <Movie />
       }
     ]
