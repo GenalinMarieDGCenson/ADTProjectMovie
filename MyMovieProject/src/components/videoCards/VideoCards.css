@@ -1,0 +1,42 @@
+.card-video-data {
+    max-width: 340px;
+    border: 20px solid #4f4f60;
+    background-color: #4f4f60;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    font-weight: normal;
+    transition: border 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .card-video-data iframe {
+    max-width: 340px;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+  
+  .card-video-data:hover {
+    border: 20px solid #373745;
+    background-color: #373745;
+  }
+  
+  .video-name-card {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 5px;
+  }
+  
+  @media (max-width: 500px) {
+    .card-video-data iframe {
+      max-width: 230px;
+    }
+  
+    .card-video-data {
+      max-width: 230px;
+      font-size: 8pt;
+    }
+  }
+  

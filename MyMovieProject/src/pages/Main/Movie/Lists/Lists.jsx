@@ -1,89 +1,110 @@
-import { useNavigate } from 'react-router-dom';
-import './Lists.css';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-const Lists = () => {
-  const accessToken = localStorage.getItem('accessToken');
-  const navigate = useNavigate();
-  const [lists, setLists] = useState([]);
+import { useNavigate } from "react-router-dom";
+import { useEffect, useContext, useCallback } from "react";
+import { AuthContext } from "../../../../utils/context/AuthContext";
+import axios from "axios";
+import "./Lists.css";
 
-  const getMovies = () => {
-    //get the movies from the api or database
-    axios.get('/movies').then((response) => {
-      setLists(response.data);
-    });
-  };
+const Lists = () => {
+  const navigate = useNavigate();
+  const { lists, setListDataMovie, auth } = useContext(AuthContext);
+
+  // Fetch movies
+  const getMovies = useCallback(() => {
+    axios
+      .get("/movies")
+      .then((response) => setListDataMovie(response.data))
+      .catch((err) => console.error("Error fetching movies:", err));
+  }, [setListDataMovie]);
+
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [getMovies]);
 
+  // Delete movie
   const handleDelete = (id) => {
     const isConfirm = window.confirm(
-      'Are you sure that you want to delete this data?'
+      "Are you sure you want to delete this movie along with its casts, photos, and videos?"
     );
     if (isConfirm) {
       axios
         .delete(`/movies/${id}`, {
           headers: {
-            Authorization: `Bearer ${accessToken}`,
+            Authorization: `Bearer ${auth.accessToken}`,
           },
         })
         .then(() => {
-          //update list by modifying the movie list array
-          const tempLists = [...lists];
-          const index = lists.findIndex((movie) => movie.id === id);
-          if (index !== undefined || index !== -1) {
-            tempLists.splice(index, 1);
-            setLists(tempLists);
-          }
-
-          //update list by requesting again to api
-          // getMovies();
-        });
+          // Update the list locally
+          const updatedLists = lists.filter((movie) => movie.id !== id);
+          setListDataMovie(updatedLists);
+        })
+        .catch((err) => console.error("Error deleting movie:", err));
     }
   };
 
   return (
-    <div className='lists-container'>
-      <div className='create-container'>
+    <div className="bg-custom">
+      <div className="top-context">
+        <h2>List of Movies</h2>
         <button
-          type='button'
-          onClick={() => {
-            navigate('/main/movies/form');
-          }}
+          type="button"
+          className="btn-top btn-primary"
+          onClick={() => navigate("/main/movies/form")}
         >
-          Create new
+          Create New
         </button>
       </div>
-      <div className='table-container'>
-        <table className='movie-lists'>
+      <div className="table-responsive mt-3">
+        <table>
           <thead>
             <tr>
+              <th>No.</th>
               <th>ID</th>
               <th>Title</th>
+              <th>TMDB ID</th>
+              <th>Popularity</th>
+              <th>Release Date</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {lists.map((movie) => (
+            {lists.length === 0 ? (
               <tr>
-                <td>{movie.id}</td>
-                <td>{movie.title}</td>
-                <td>
-                  <button
-                    type='button'
-                    onClick={() => {
-                      navigate('/main/movies/form/' + movie.id);
-                    }}
-                  >
-                    Edit
-                  </button>
-                  <button type='button' onClick={() => handleDelete(movie.id)}>
-                    Delete
-                  </button>
+                <td colSpan="7" className="text-center">
+                  <strong>No movies found or created.</strong>
                 </td>
               </tr>
-            ))}
+            ) : (
+              lists.map((movie, index) => (
+                <tr key={movie.id}>
+                  <td>{index + 1}</td>
+                  <td>{movie.id}</td>
+                  <td>{movie.title}</td>
+                  <td>{movie.tmdbId}</td>
+                  <td>{movie.popularity}</td>
+                  <td>{movie.releaseDate}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-warning btn-sm me-2"
+                      onClick={() =>
+                        navigate(
+                          `/main/movies/form/${movie.id}/cast-and-crews/${movie.tmdbId}`
+                        )
+                      }
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-danger btn-sm ms-2"
+                      onClick={() => handleDelete(movie.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

@@ -1,17 +1,88 @@
-.lists-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.create-container {
-  align-self: flex-end;
-  margin: 1rem 0;
-}
-.table-container,
-.movie-lists {
-  width: 100%;
+.bg-custom {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.table-container {
+.top-context {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.btn-top {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.text-center {
   text-align: center;
+  color: #666;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
 }

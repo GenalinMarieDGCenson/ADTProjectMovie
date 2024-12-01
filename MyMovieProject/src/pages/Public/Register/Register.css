@@ -1,24 +1,151 @@
-.Register {
-    width: 100%;
-    max-width: 400px;
-    margin: 50px auto;
+/* General container styling */
+.color-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #121212; /* Plain dark background */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+  }
+  
+  /* Form container */
+  .Register-Form {
+    width: 400px;
     padding: 30px;
-    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .Register h3 {
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 24px;
-    color: #333;
-    font-weight: 500;
+    color: white;
   }
   
-  .form-group {
+  /* Title and description */
+  .Register-Form h1.text-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .Register-Form p.text-description {
+    text-align: center;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 20px;
   }
   
+  /* Form styling */
+  .box-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Form group - align label and input in one line */
+  .box-form .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .box-form label {
+    flex: 0 0 35%;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+  }
+  
+  .box-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    transition: border 0.3s;
+  }
+  
+  .box-form input:focus {
+    outline: none;
+    border-color: #e50914;
+    box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
+  }
+  
+  /* Password visibility toggle */
+  .form-check {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .form-check input {
+    margin-right: 8px;
+  }
+  
+  .form-check label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Register button */
+  .button-box-register {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .button-box-register .btn {
+    width: 90%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #e50914;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .button-box-register .btn:hover {
+    background: #f6121d;
+    transform: translateY(-2px);
+  }
+  
+  .text-center {
+    margin-top: 10px;
+  }
+  
+  .text-center a {
+    color: #e50914;
+    text-decoration: none;
+    font-size: 0.85rem;
+  }
+  
+  .text-center a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 500px) {
+    .Register-Form {
+      width: 90%;
+    }
+  
+    .box-form label {
+      font-size: 0.9rem;
+      text-align: left;
+    }
+  
+    .box-form input {
+      font-size: 0.9rem;
+    }
+  }
   

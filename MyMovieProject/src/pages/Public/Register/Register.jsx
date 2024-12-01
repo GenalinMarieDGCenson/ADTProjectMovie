@@ -1,144 +1,132 @@
-import { useState, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDebounce } from "../../../utils/hooks/useDebounce";
+import axios from "axios";
+import "./Register.css";
 
 function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [contactNo, setContactNo] = useState("");
+  const navigate = useNavigate();
+
+  const [formState, setFormState] = useState({
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    contactNo: "",
+    email: "",
+    password: "",
+  });
+
+  const [status, setStatus] = useState("idle");
+  const [alert, setAlert] = useState({ message: "", type: "" });
   const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isFieldsDirty, setIsFieldsDirty] = useState(false);
 
-  const handleShowPassword = useCallback(() => {
-    setIsShowPassword((prev) => !prev);
-  }, []);
+  const debouncedInput = useDebounce(formState, 2000);
 
-  const handleOnChange = (event, setter) => setter(event.target.value);
+  const refs = {
+    firstName: useRef(),
+    middleName: useRef(),
+    lastName: useRef(),
+    contactNo: useRef(),
+    email: useRef(),
+    password: useRef(),
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({ ...prev, [name]: value }));
+    setIsFieldsDirty(true);
+  };
+
+  const handleShowPasswordToggle = () => setIsShowPassword((prev) => !prev);
+
+  const validateFields = () => {
+    return Object.entries(formState).every(([key, value]) => {
+      if (!value.trim()) {
+        refs[key]?.current?.focus();
+        return false;
+      }
+      return true;
+    });
+  };
+
+  const handleRegister = async () => {
+    if (!validateFields()) {
+      setAlert({ message: "All fields are required.", type: "error" });
+      return;
+    }
+
+    setStatus("loading");
+    try {
+      const { data } = await axios.post("/user/register", formState, {
+        headers: { "Access-Control-Allow-Origin": "*" },
+      });
+      localStorage.setItem("accessToken", data.access_token);
+      setAlert({ message: data.message, type: "success" });
+      setTimeout(() => navigate("/"), 3000);
+    } catch (error) {
+      const message =
+        error.response?.data?.message || "An error occurred. Please try again.";
+      setAlert({ message, type: "error" });
+    } finally {
+      setStatus("idle");
+    }
+  };
+
+  useEffect(() => {}, [debouncedInput]);
 
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "#f7f7f7",
-        fontFamily: "Arial, sans-serif",
-      }}
-    >
-      <div
-        style={{
-          width: "400px",
-          background: "#fff",
-          padding: "20px",
-          borderRadius: "8px",
-          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-        }}
-      >
-        <h3 className="text-center mb-4">Welcome to Movie Web App!</h3>
-        <p className="text-center">
-          Sign up to unlock the movies, reviews and discover new content!
+    <div className="color-page">
+      <div className="Register-Form">
+        {alert.message && (
+          <div className={`alert alert-${alert.type}`}>{alert.message}</div>
+        )}
+        <h1 className="text-title">
+          <strong>Welcome to MovieWebDB</strong>
+        </h1>
+        <p className="text-description">
+          Sign up to unlock movies, reviews, and discover new content!
         </p>
-
-        <form>
-          {[
-            { label: "First Name", value: firstName, setter: setFirstName },
-            { label: "Middle Name", value: middleName, setter: setMiddleName },
-            { label: "Last Name", value: lastName, setter: setLastName },
-            { label: "Contact Number", value: contactNo, setter: setContactNo },
-            { label: "Email", value: email, setter: setEmail },
-          ].map(({ label, value, setter }) => (
-            <div key={label} className="mb-3">
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "8px", // Added spacing
-                  fontSize: "14px",
-                }}
-              >
-                {label}:
-              </label>
+        <hr />
+        <form className="box-form">
+          {Object.keys(formState).map((key) => (
+            <div key={key} className="form-group">
+              <label htmlFor={key}>{key.replace(/([A-Z])/g, " $1")}</label>
               <input
-                type="text"
-                className="form-control"
-                style={{
-                  width: "95%",
-                  padding: "10px", // Increased padding for comfort
-                  borderRadius: "4px",
-                  border: "1px solid #ccc",
-                }}
-                value={value}
-                onChange={(e) => handleOnChange(e, setter)}
+                type={key === "password" && !isShowPassword ? "password" : "text"}
+                id={key}
+                name={key}
+                ref={refs[key]}
+                value={formState[key]}
+                onChange={handleInputChange}
+                required
               />
             </div>
           ))}
-
-          <div className="mb-3">
-            <label
-              style={{
-                display: "block",
-                marginBottom: "8px", // Added spacing
-                fontSize: "14px",
-              }}
-            >
-              Password:
-            </label>
+          <div className="form-check">
             <input
-              type={isShowPassword ? "text" : "password"}
-              className="form-control"
-              style={{
-                width: "95%",
-                padding: "10px", // Increased padding
-                borderRadius: "4px",
-                border: "1px solid #ccc",
-              }}
-              value={password}
-              onChange={(e) => handleOnChange(e, setPassword)}
+              type="checkbox"
+              id="showPassword"
+              onChange={handleShowPasswordToggle}
             />
-            <div
-              className="form-check mt-2"
-              style={{ textAlign: "center", marginTop: "10px" }}
+            <label htmlFor="showPassword">
+              {isShowPassword ? "Hide" : "Show"} Password
+            </label>
+          </div>
+          <div className="button-box-register">
+            <button
+              type="button"
+              className="btn btn-primary"
+              disabled={status === "loading"}
+              onClick={handleRegister}
             >
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="showPassword"
-                onClick={handleShowPassword}
-              />
-              <label
-                className="form-check-label"
-                htmlFor="showPassword"
-                style={{ marginLeft: "5px" }}
-              >
-                Show Password
-              </label>
+              {status === "idle" ? "Register" : "Loading..."}
+            </button>
+            <div className="text-center">
+              <a href="/">Already have an account? Login</a>
             </div>
           </div>
-
-          <button
-            type="button"
-            className="btn btn-primary w-100"
-            style={{
-              padding: "10px",
-              background: "#007bff",
-              color: "#fff",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-          >
-            Register
-          </button>
         </form>
-
-        <div className="text-center mt-3">
-          <small>
-            Already have an account?{" "}
-            <a href="/" style={{ color: "#007bff" }}>
-              Login
-            </a>
-          </small>
-        </div>
       </div>
     </div>
   );

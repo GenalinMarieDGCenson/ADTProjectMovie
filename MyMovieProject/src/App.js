@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
+//import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Public/Login/Login';
@@ -51,23 +51,23 @@ const router = createBrowserRouter([
             element: <Lists />,
           },
           {
-            path: '/main/movies/form/:movieId?',
+            path: '/main/movies/form/:id?',
             element: <Form />,
             children: [
               {
-                path: '/main/movies/form/:movieId',
+                path: '/main/movies/form/:id',
                 element: <CastForm />
               },
               {
-                path: '/main/movies/form/:movieId/cast-and-crews',
+                path: '/main/movies/form/:id/cast-and-crews/:movieId?',
                 element: <CastForm />
               },
               {
-                path: '/main/movies/form/:movieId/photos',
+                path: '/main/movies/form/:id/photos/:movieId?',
                 element: <PhotoForm />
               },
               {
-                path: '/main/movies/form/:movieId/videos',
+                path: '/main/movies/form/:id/videos/:movieId?',
                 element: <VideoForm />
               },
             ]
