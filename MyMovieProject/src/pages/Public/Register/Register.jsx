@@ -1,132 +1,157 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDebounce } from "../../../utils/hooks/useDebounce";
-import axios from "axios";
-import "./Register.css";
+import { useState, useRef, useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDebounce } from '../../../utils/hooks/useDebounce';
+import axios from 'axios';
+import './Register.css'
 
 function Register() {
-  const navigate = useNavigate();
-
-  const [formState, setFormState] = useState({
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    contactNo: "",
-    email: "",
-    password: "",
+  // Form data as a single state object
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    contactNo: '',
   });
 
-  const [status, setStatus] = useState("idle");
-  const [alert, setAlert] = useState({ message: "", type: "" });
-  const [isShowPassword, setIsShowPassword] = useState(false);
   const [isFieldsDirty, setIsFieldsDirty] = useState(false);
+  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [debounceState, setDebounceState] = useState(false);
+  const [status, setStatus] = useState('idle');
+  const [alertMessage, setAlertMessage] = useState('');
+  const [isError, setIsError] = useState('failed');
+  
+  const navigate = useNavigate();
+  const userInputDebounce = useDebounce(formData, 2000);
 
-  const debouncedInput = useDebounce(formState, 2000);
-
+  // Refs for focusing fields
   const refs = {
+    email: useRef(),
+    password: useRef(),
     firstName: useRef(),
     middleName: useRef(),
     lastName: useRef(),
     contactNo: useRef(),
-    email: useRef(),
-    password: useRef(),
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormState((prev) => ({ ...prev, [name]: value }));
+  const handleShowPassword = useCallback(() => {
+    setIsShowPassword((prev) => !prev);
+  }, []);
+
+  const handleOnChange = (event, fieldName) => {
+    setDebounceState(false);
     setIsFieldsDirty(true);
+    setFormData((prev) => ({ ...prev, [fieldName]: event.target.value }));
   };
 
-  const handleShowPasswordToggle = () => setIsShowPassword((prev) => !prev);
-
-  const validateFields = () => {
-    return Object.entries(formState).every(([key, value]) => {
-      if (!value.trim()) {
-        refs[key]?.current?.focus();
-        return false;
-      }
-      return true;
-    });
-  };
+  const apiEndpoint = window.location.pathname.includes('/admin') ? '/admin/register' : '/user/register';
 
   const handleRegister = async () => {
-    if (!validateFields()) {
-      setAlert({ message: "All fields are required.", type: "error" });
-      return;
-    }
+    const { email, password, firstName, middleName, lastName, contactNo } = formData;
+    setStatus('loading');
 
-    setStatus("loading");
     try {
-      const { data } = await axios.post("/user/register", formState, {
-        headers: { "Access-Control-Allow-Origin": "*" },
-      });
-      localStorage.setItem("accessToken", data.access_token);
-      setAlert({ message: data.message, type: "success" });
-      setTimeout(() => navigate("/"), 3000);
+      const res = await axios.post(apiEndpoint, formData, { headers: { 'Access-Control-Allow-Origin': '*' } });
+      setAlertMessage(res.data.message);
+      setIsError('success');
+      localStorage.setItem('accessToken', res.data.access_token);
+      
+      setTimeout(() => {
+        navigate('/');
+        setStatus('idle');
+      }, 3000);
     } catch (error) {
-      const message =
-        error.response?.data?.message || "An error occurred. Please try again.";
-      setAlert({ message, type: "error" });
-    } finally {
-      setStatus("idle");
+      setAlertMessage(error.response?.data?.message || error.message);
+      setIsError('failed');
+      setStatus('idle');
+      setTimeout(() => setAlertMessage(''), 3000);
     }
   };
 
-  useEffect(() => {}, [debouncedInput]);
+  useEffect(() => {
+    setDebounceState(true);
+  }, [userInputDebounce]);
 
   return (
     <div className="color-page">
       <div className="Register-Form">
-        {alert.message && (
-          <div className={`alert alert-${alert.type}`}>{alert.message}</div>
+        {alertMessage && (
+          <div className={`text-message-box-${isError}`}>
+            {alertMessage}
+          </div>
         )}
-        <h1 className="text-title">
-          <strong>Welcome to MovieWebDB</strong>
-        </h1>
-        <p className="text-description">
-          Sign up to unlock movies, reviews, and discover new content!
-        </p>
-        <hr />
-        <form className="box-form">
-          {Object.keys(formState).map((key) => (
-            <div key={key} className="form-group">
-              <label htmlFor={key}>{key.replace(/([A-Z])/g, " $1")}</label>
-              <input
-                type={key === "password" && !isShowPassword ? "password" : "text"}
-                id={key}
-                name={key}
-                ref={refs[key]}
-                value={formState[key]}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-          ))}
-          <div className="form-check">
+        <div>
+          <h1 className="text-title"><strong>Welcome to MovieWebDB</strong></h1>
+          <p className="text-description">Step into the spotlight! Sign up to explore movies, read reviews, and uncover your next favorite hit!</p>
+          <hr />
+          <form className="box-form">
+            {['firstName', 'middleName', 'lastName', 'contactNo', 'email'].map((field, idx) => (
+              <div key={idx}>
+                <label htmlFor={field}>{field.charAt(0).toUpperCase() + field.slice(1)}:</label>
+                <input
+                  type={field === 'email' ? 'email' : 'text'}
+                  id={field}
+                  name={field}
+                  value={formData[field]}
+                  onChange={(e) => handleOnChange(e, field)}
+                  ref={refs[field]}
+                  required
+                />
+                <div className="error-display-register">
+                  {debounceState && isFieldsDirty && formData[field] === '' && (
+                    <strong className="text-danger-register">This field is required</strong>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            <label htmlFor="password">Password:</label>
             <input
-              type="checkbox"
-              id="showPassword"
-              onChange={handleShowPasswordToggle}
+              type={isShowPassword ? 'text' : 'password'}
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={(e) => handleOnChange(e, 'password')}
+              ref={refs.password}
+              required
             />
-            <label htmlFor="showPassword">
-              {isShowPassword ? "Hide" : "Show"} Password
-            </label>
-          </div>
-          <div className="button-box-register">
-            <button
-              type="button"
-              className="btn btn-primary"
-              disabled={status === "loading"}
-              onClick={handleRegister}
-            >
-              {status === "idle" ? "Register" : "Loading..."}
-            </button>
-            <div className="text-center">
-              <a href="/">Already have an account? Login</a>
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                id="showPassword"
+                onClick={handleShowPassword}
+              />
+              <div className="form-check-label" htmlFor="showPassword">
+                {isShowPassword ? 'Hide' : 'Show'} Password
+              </div>
             </div>
-          </div>
-        </form>
+
+            <div className="button-box-register">
+              <button
+                type="button"
+                className="btn btn-primary"
+                disabled={status === 'loading'}
+                onClick={() => {
+                  if (Object.values(formData).every((field) => field !== '')) {
+                    handleRegister();
+                  } else {
+                    setIsFieldsDirty(true);
+                    Object.entries(formData).forEach(([key, value]) => {
+                      if (value === '') refs[key].current.focus();
+                    });
+                  }
+                }}
+              >
+                {status === 'idle' ? 'Register' : 'Loading...'}
+              </button>
+              <div className="text-center">
+                <a href="/">Already have an account? Login</a>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -1,101 +1,86 @@
-/* Layout Styling */
 .Main {
   display: flex;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+.Main .custom-container {
+  display: flex;
+  width: 100vw;
+}
+
+.Main .custom-container .outlet {
+  flex-grow: 3;
+  padding: 1rem;
+}
+
+.Main .custom-container .navigation {
+  background-color: rgb(79, 79, 79);
+  padding-top: 40px;
   height: 100vh;
-  background: #121212;
 }
 
-.custom-container {
-  display: flex;
-  flex: 1;
-}
-
-/* Sidebar Navigation */
 .navigation {
-  width: 250px;
-  background: rgba(0, 0, 0, 0.9);
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 110px;
 }
 
-.admin-info {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.admin-info .user-info {
-  margin-top: 10px;
-}
-
-.admin-info .role {
-  font-size: 1rem;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.admin-info .name {
-  font-size: 1.5rem;
-  color: white;
-}
-
-/* Navigation Links */
-.nav ul {
+.Main .custom-container .navigation ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
 }
 
-.nav li {
-  margin: 15px 0;
+.Main .custom-container .navigation ul li {
+  padding: 10px 20px;
+  margin-bottom: 10px;
 }
 
-.nav-link {
-  display: block;
-  text-align: center;
-  padding: 10px;
-  color: white;
+.Main .custom-container .navigation ul li.active,
+.Main .custom-container .navigation ul li:hover {
+  background: #1d0f9b;
+  color: rgb(255, 255, 255);
+}
+
+.Main .custom-container .navigation ul li a {
   text-decoration: none;
-  transition: background 0.3s, transform 0.2s;
 }
 
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-/* Logout Button */
-.logout button {
-  width: 100%;
+.Main .custom-container .navigation ul li.logout {
   cursor: pointer;
 }
 
-/* Content Area */
-.outlet {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background: #1f1f1f;
+.logout {
+  display: flex;
+  justify-content: center;
 }
 
 .bg-custom {
-  background: #1f1f1f;
+  background-color: #343a40;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .navigation {
-    width: 200px;
-  }
+.admin-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-  .admin-info .name {
-    font-size: 1.2rem;
-  }
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .nav-link {
-    font-size: 0.9rem;
-  }
+.role {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.name {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 10px;
 }

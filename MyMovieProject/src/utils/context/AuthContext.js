@@ -3,72 +3,66 @@ import React, { createContext, useState, useEffect } from 'react';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  // Authentication state
   const [auth, setAuth] = useState({
     accessToken: localStorage.getItem('accessToken') || null,
     user: JSON.parse(localStorage.getItem('user')) || null,
   });
 
-  // Movie and List states
-  const [movie, setMovie] = useState(null);
-  const [lists, setLists] = useState([]);
-
-  // Update authentication data and save to localStorage
   const setAuthData = (data) => {
-    const { accessToken, user } = data;
+    setAuth({
+      accessToken: data.accessToken,
+      user: data.user,
+    });
 
-    setAuth({ accessToken, user });
-    localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('user', JSON.stringify(user));
+    const role = data.user?.role;
 
-    if (user?.role === 'admin') {
+    if (role === 'admin') {
       localStorage.setItem('tab', JSON.stringify('cast'));
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('user', JSON.stringify(data.user));
+    } else {
+      localStorage.setItem('accessToken', data.accessToken);
+      localStorage.setItem('user', JSON.stringify(data.user));
     }
   };
 
-  // Update selected movie
+  const [movie, setMovie] = useState(null);
+  const [lists, setLists] = useState([]);
+
   const setMovieInfo = (movieInfo) => {
     if (movieInfo && movieInfo.id !== movie?.id) {
+      console.log(movieInfo);
       setMovie(movieInfo);
     }
   };
 
-  // Update movie list
   const setListDataMovie = (listData) => {
     setLists(listData);
   };
 
-  // Clear authentication data and localStorage
   const clearAuthData = () => {
-    setAuth({ accessToken: null, user: null });
+    setAuth({
+      accessToken: null,
+      user: null,
+    });
+
     setMovie(null);
     setLists([]);
+
+    // Remove from localStorage
     localStorage.removeItem('accessToken');
     localStorage.removeItem('user');
     localStorage.removeItem('tab');
   };
 
-  // Placeholder for fetching movie data if necessary
   useEffect(() => {
     if (!movie && auth.accessToken) {
-      // Add logic to fetch movie data if needed
+      //console.log('Trigger fetching movie data because movie is null');
     }
   }, [auth, movie]);
 
   return (
-    <AuthContext.Provider
-      value={{
-        auth,
-        setAuthData,
-        clearAuthData,
-        movie,
-        setMovieInfo,
-        lists,
-        setListDataMovie,
-        setLists,
-        setMovie,
-      }}
-    >
+    <AuthContext.Provider value={{ auth, setAuthData, clearAuthData, movie, setMovieInfo, lists, setListDataMovie, setLists, setMovie }}>
       {children}
     </AuthContext.Provider>
   );

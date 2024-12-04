@@ -6,38 +6,34 @@
     color: white;
     text-align: center;
     font-weight: none;
-    transition: border 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .card-cast-data img {
+}
+
+.card-cast-data img {
     max-width: 181px;
     object-fit: contain;
     border-radius: 10px;
-  }
-  
-  .card-cast-data:hover {
+}
+
+.card-cast-data:hover {
     border: 20px solid #373745;
     background-color: #373745;
-  }
-  
-  .spacing-cast-card {
+}
+
+.spacing-cast-card {
     margin: 8px 0px;
-  }
-  
-  .cast-characterName-card {
+}
+
+.cast-characterName-card {
     font-size: 12pt;
-    font-weight: 600;
-    color: #fff;
-  }
-  
-  @media (max-width: 500px) {
+}
+
+@media (max-width: 500px) {
     .card-cast-data img {
-      max-width: 118px;
+        max-width: 118px;
     }
-  
+
     .card-cast-data {
-      max-width: 118px;
-      font-size: 10pt;
+        max-width: 118px;
+        font-size: 10pt;
     }
-  }
-  
+}

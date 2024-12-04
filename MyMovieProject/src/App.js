@@ -16,6 +16,10 @@ import Home from './pages/Client/Home/Home';
 import Client from './pages/Client/Client';
 import Movies from './pages/Main/Movie/Movie';
 import Movie from './pages/Client/Movie/Movie';
+import ForgotPassword from './pages/Public/ForgotPassword/ForgotPassword';
+
+//ADT313 Movie Project (MovieWebDB)
+//Submitted by: Neil Raphael M. Ramos
 
 const router = createBrowserRouter([
   {
@@ -27,12 +31,20 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: 'adminmode/login',
+    path: '/admin/',
     element: <Login />,
   },
   {
-    path: 'adminmode/register',
+    path: '/admin/register',
     element: <Register />,
+  },
+  {
+    path: '/reset-password',
+    element: <ForgotPassword />
+  },
+  {
+    path: '/admin/reset-password',
+    element: <ForgotPassword />
   },
   {
     path: '/main',

@@ -1,132 +1,193 @@
-/* General container styling */
-.color-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #121212; /* Plain dark background */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  color: white;
+/* Center the .Login-Form */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    background: #222121; /* Optional background color */
 }
 
-/* Login Form container */
 .Login-Form {
-  width: 400px;
-  padding: 30px;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.9);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  text-align: center;
-  color: white;
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
-/* Title and description */
 .Login-Form h1.text-title {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  margin-bottom: 10px;
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 10px;
 }
 
 .Login-Form p.text-description {
-  text-align: center;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 20px;
+    font-size: 1rem;
+    color: #3d2424;
+    margin-bottom: 20px;
 }
 
-/* Form styling */
-.box-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.Login-Form .box-form {
+    text-align: left;
 }
 
-/* Input fields */
-.box-form input[type="email"],
-.box-form input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  font-size: 1rem;
-  transition: border 0.3s;
+.Login-Form .box-form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555555;
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
 }
 
-.box-form input:focus {
-  outline: none;
-  border-color: #e50914;
-  box-shadow: 0 0 10px rgba(229, 9, 20, 0.6);
-}
-
-/* Password visibility toggle */
-.form-check {
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-}
-
-.form-check input {
-  margin-right: 8px;
-}
-
-.form-check label {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Login button */
-.button-box-login {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.button-box-login .btn {
-  width: 90%;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  background: #e50914;
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.button-box-login .btn:hover {
-  background: #f6121d;
-  transform: translateY(-2px);
-}
-
-/* Forgot password link */
-.text-center {
-  margin-top: 10px;
-}
-
-.text-center a {
-  color: #e50914;
-  text-decoration: none;
-  font-size: 0.85rem;
-}
-
-.text-center a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive adjustments */
-@media (max-width: 500px) {
-  .Login-Form {
-    width: 90%;
-  }
-
-  .box-form input {
+.Login-Form .box-form input[type="text"],
+.Login-Form .box-form input[type="password"] {
+    width: calc(100% - 20px);
+    max-width: 500px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
     font-size: 0.9rem;
-  }
+    transition: border 0.3s;
+    text-align: left;
+}
+
+.Login-Form .box-form input:focus {
+    outline: none;
+    border: 1px solid #6a11cb;
+    box-shadow: 0px 0px 8px rgba(106, 17, 203, 0.5);
+}
+
+.Login-Form .form-check {
+    text-align: left;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.button-box-login {
+    text-align: center;
+}
+
+.Login-Form .form-check .showpassword-login {
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.selection-login {
+    display: flex;
+    justify-content: space-between;
+}
+
+.forgotpassword-login {
+    font-size: 0.85rem;
+    color: #666666;
+    cursor: pointer;
+}
+
+.forgotpassword-login:hover {
+    color: #48465a;
+}
+
+.Login-Form .btn {
+    background: linear-gradient(to right, #612d2d, #ff0015);
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.Login-Form .btn:hover {
+    background: linear-gradient(to right, #612d2d, #ff0015);
+    transform: translateY(-3px);
+}
+
+.Login-Form .btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.Login-Form .text-center a {
+    font-size: 0.85rem;
+    color: #ff0b2fc9;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.Login-Form .text-center a:hover {
+    color: #d23b52c9;
+}
+
+.text-danger-login {
+    font-size: 0.85rem;
+    color: #ff4d4f;
+    text-align: left;
+    display: block;
+}
+
+.text-message-box {
+    width: 100%;
+    height: 40px;
+    background-color: #ffa0a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: #ff4d4f solid 1px;
+    color: #ffffff;
+}
+
+.error-display {
+    width: 100%;
+    height: 17px;
+    padding: 2px;
+}
+
+@media (max-width: 500px) {
+    .Login-Form {
+        width: 300px;
+        height: auto;
+    }
+
+    .Login-Form h1.text-title {
+        font-size: 1.3rem;
+    }
+
+    .Login-Form p.text-description {
+        font-size: 0.8rem;
+        color: #3d2424;
+        margin-bottom: 20px;
+    }
+
+    .Login-Form .box-form label {
+        font-size: 1.0rem;
+        margin-top: -8px;
+    }
+
+    .Login-Form .box-form input[type="text"],
+    .Login-Form .box-form input[type="password"] {
+        width: calc(100% - 18px);
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .Login-Form .form-check label {
+        font-size: 0.75rem;
+        color: #666666;
+    }
+
+    .Login-Form .text-center a:hover {
+        color: #6a11cb;
+    }
+
+    .text-danger-login {
+        font-size: 0.65rem;
+    }
 }

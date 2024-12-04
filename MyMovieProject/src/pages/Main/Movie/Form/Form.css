@@ -32,7 +32,7 @@
   height: 40px;
   background-color: rgb(255, 147, 147);
   color: white;
-  border: 1px solid red;
+  border: red solid 1px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -49,7 +49,7 @@
 
 .searched-movie {
   overflow: auto;
-  max-height: 200px;
+  max-Height: 200px;
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -160,7 +160,7 @@ li:hover {
 }
 
 .photo-tab,
-.video-tab,
-.cast-tab {
-  border-radius: 8px 8px 0 0;
+.video-tab, 
+.cast-tab{
+  border-radius: 8px 8px 0px 0px;
 }
