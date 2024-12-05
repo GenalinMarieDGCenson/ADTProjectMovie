@@ -368,7 +368,7 @@ function CastForm() {
                     ? `https://image.tmdb.org/t/p/original/${selectedcast.profile_path}`
                     : selectedcast?.url
                       ? selectedcast.url
-                      : require('./../../../../utils/images/—Pngtree—portrait watercolor blue sky abstract_1789044.png')
+                      : require('./../../../../utils/images/Luxury Atmosphere Show Party Advertising Background, Performance, Literary Performance, Commercial Advertising Background Image And Wallpaper for Free Download.jpg')
                   }
                   className='img-cast'
                 />
