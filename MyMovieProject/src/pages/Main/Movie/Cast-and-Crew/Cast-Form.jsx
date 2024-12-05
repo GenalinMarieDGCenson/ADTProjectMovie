@@ -368,7 +368,7 @@ function CastForm() {
                     ? `https://image.tmdb.org/t/p/original/${selectedcast.profile_path}`
                     : selectedcast?.url
                       ? selectedcast.url
-                      : require('./../../../../utils/images/Luxury Atmosphere Show Party Advertising Background, Performance, Literary Performance, Commercial Advertising Background Image And Wallpaper for Free Download.jpg')
+                      : require('./../../../../utils/images/Realistic Retro Cinema Now Showing.jpg')
                   }
                   className='img-cast'
                 />
