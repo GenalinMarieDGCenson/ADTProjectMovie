@@ -72,7 +72,7 @@ const Form = () => {
                 url: `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`,
                 headers: {
                     Accept: 'application/json',
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MGY0ZjFlMmNhODQ1ZjA3NWY5MmI5ZDRlMGY3ZTEwYiIsIm5iZiI6MTcyOTkyNjY3NC40NzIwOTksInN1YiI6IjY3MTM3ODRmNjUwMjQ4YjlkYjYxZTgxMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RRJNLOg8pmgYoomiCWKtwkw74T3ZtAs7ZScqxo1bzWg',
+                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmU2ODc3NDJmYTRkZWEzMTc3NzdiMWY3ZDgxZDkyNyIsIm5iZiI6MTczMjA3MjIwMS4yNzQsInN1YiI6IjY3M2Q1MzA5NDQzNWU3OGJmYmE3NjE4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uv5x1hENYY4WkAw6XFbSUlcODJFjX293NGUZLebIMUE',
                 },
             });
 
@@ -290,7 +290,7 @@ const Form = () => {
                         className="img-fluid"
                         src={selectedMovie?.poster_path
                             ? `https://image.tmdb.org/t/p/original/${selectedMovie.poster_path}`
-                            : require('./../../../../utils/images/cinematography-symbols-black-background.jpg')}
+                            : require('./../../../../utils/images/download (1).jpg')}
                         alt={selectedMovie?.title || 'Fallback Cinematography Symbol'}
                         style={{ maxHeight: "500px", maxWidth: "318px" }}
                     />
