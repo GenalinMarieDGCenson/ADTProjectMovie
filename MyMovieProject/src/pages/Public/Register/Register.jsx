@@ -5,7 +5,7 @@ import axios from 'axios';
 import './Register.css'
 
 function Register() {
-  // Form data as a single state object
+  
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -25,7 +25,7 @@ function Register() {
   const navigate = useNavigate();
   const userInputDebounce = useDebounce(formData, 2000);
 
-  // Refs for focusing fields
+  
   const refs = {
     email: useRef(),
     password: useRef(),

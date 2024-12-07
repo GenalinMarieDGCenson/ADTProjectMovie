@@ -75,7 +75,7 @@
 }
 
 .Register-Form .btn {
-    background: linear-gradient(to right, #612d2d, #ff0015);
+    background: linear-gradient(to right, #003060, #055c9d); 
     color: #ffffff;
     padding: 12px 20px;
     border: none;
@@ -87,7 +87,7 @@
 }
 
 .Register-Form .btn:hover {
-    background: linear-gradient(to right, #612d2d, #ff0015);
+    background: linear-gradient(to right, #003060, #055c9d); 
     transform: translateY(-3px);
 }
 
@@ -98,13 +98,13 @@
 
 .Register-Form .text-center a {
     font-size: 0.85rem;
-    color: #ff0b2fc9;
+    color: #68bbe3;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .Register-Form .text-center a:hover {
-    color: #ff4d4f;
+    color: #68bbe3;
 }
 
 .text-danger-register {

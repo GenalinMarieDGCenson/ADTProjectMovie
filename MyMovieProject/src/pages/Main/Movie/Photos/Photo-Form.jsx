@@ -36,7 +36,7 @@ function PhotoForm() {
     getAll(movieId);
   }, [movieId, getAll]);
 
-  //This used for Importing Photos based on tmdbId from Movie
+
   function importDataPhoto() {
     axios({
       method: 'get',
@@ -54,7 +54,7 @@ function PhotoForm() {
     })
   }
 
-  //Saving all Photo Imported to Database
+  
   async function setSavePhotosImp(photoImportData) {
     await Promise.all(photoImportData.map(async (datainfo) => {
       const dataphoto = {
@@ -100,7 +100,7 @@ function PhotoForm() {
     };
 
     if (!validateFields()) {
-      return; // This is for stop if any valid is null
+      return; 
     } else {
       try {
         const dataphoto = {
@@ -178,7 +178,7 @@ function PhotoForm() {
     };
 
     if (!validateFields()) {
-      return; // This is for stop if any valid is null
+      return; 
     } else {
       const isConfirm = window.confirm("Are you sure you want to update the Photo?");
       if (isConfirm) {

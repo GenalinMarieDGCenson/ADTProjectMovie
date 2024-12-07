@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     setMovie(null);
     setLists([]);
 
-    // Remove from localStorage
+   
     localStorage.removeItem('accessToken');
     localStorage.removeItem('user');
     localStorage.removeItem('tab');
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (!movie && auth.accessToken) {
-      //console.log('Trigger fetching movie data because movie is null');
+    
     }
   }, [auth, movie]);
 

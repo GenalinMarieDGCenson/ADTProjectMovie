@@ -6,16 +6,12 @@ import { faSignOutAlt, faFilm, faTachometerAlt, faUserCircle } from '@fortawesom
 import './Main.css';
 
 function Main() {
-  //get user info
-  const { auth } = useContext(AuthContext);
+  const { auth, clearAuthData } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const { clearAuthData } = useContext(AuthContext);
-
 
   const handleResetTab = () => {
     localStorage.setItem('tab', JSON.stringify('cast'));
-  }
+  };
 
   const handleLogout = useCallback(() => {
     clearAuthData();
@@ -31,39 +27,44 @@ function Main() {
   return (
     <div className="Main">
       <div className="custom-container">
-        <div className="navigation text-light">
+        {}
+        <div className="navigation bg-dark text-light">
           <div className="admin-info">
-            <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: '50px', color: 'white' }} />
-            <span className="user-info">
+            <FontAwesomeIcon icon={faUserCircle} style={{ fontSize: '50px', color: '#ffffff' }} />
+            <div className="user-info">
               <p className="role">{auth.user.role}</p>
               <h1 className="name">{auth.user.firstName}</h1>
-            </span>
+            </div>
           </div>
-          <hr></hr>
+          <hr />
           <ul className="nav">
+            {}
             <li>
               <a href="/main/dashboard" className="nav-link" title="Dashboard">
                 <center>
-                  <FontAwesomeIcon icon={faTachometerAlt} style={{ fontSize: '24px', color: 'white' }} />
+                  <FontAwesomeIcon icon={faTachometerAlt} style={{ fontSize: '24px', color: '#ffffff' }} />
                 </center>
               </a>
             </li>
+            {}
             <li>
               <a href="/main/movies" className="nav-link" title="Movies" onClick={handleResetTab}>
                 <center>
-                  <FontAwesomeIcon icon={faFilm} style={{ fontSize: '24px', color: 'white' }} />
+                  <FontAwesomeIcon icon={faFilm} style={{ fontSize: '24px', color: '#ffffff' }} />
                 </center>
               </a>
             </li>
+            {}
             <li className="logout" title="Logout">
               <button onClick={handleLogout} className="nav-link" style={{ background: 'none', border: 'none' }}>
                 <center>
-                  <FontAwesomeIcon icon={faSignOutAlt} style={{ fontSize: '24px', color: 'white' }} />
+                  <FontAwesomeIcon icon={faSignOutAlt} style={{ fontSize: '24px', color: '#ffffff' }} />
                 </center>
               </button>
             </li>
           </ul>
         </div>
+        {}
         <div className="outlet bg-custom text-light">
           <Outlet />
         </div>

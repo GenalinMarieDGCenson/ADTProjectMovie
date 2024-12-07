@@ -5,7 +5,7 @@ import { AuthContext } from '../../../utils/context/AuthContext';
 import axios from 'axios';
 import './Login.css';
 
-// Reusable Input Field Component
+
 const InputField = ({ label, type, value, onChange, error, refProp }) => (
   <div>
     <label htmlFor={label}><strong>{label}:</strong></label>
@@ -21,7 +21,7 @@ const InputField = ({ label, type, value, onChange, error, refProp }) => (
   </div>
 );
 
-// Reusable Alert Box
+
 const AlertBox = ({ message }) => (
   message && <div className="text-message-box">{message}</div>
 );
@@ -43,19 +43,19 @@ function Login() {
 
   const apiEndpoint = window.location.pathname.includes('/admin') ? '/admin/login' : '/user/login';
 
-  // Toggle password visibility
+  
   const toggleShowPassword = useCallback(() => {
     setIsShowPassword((prev) => !prev);
   }, []);
 
-  // Handle input changes
+  
   const handleInputChange = (setter) => (event) => {
     setIsFieldsDirty(true);
     setDebounceState(false);
     setter(event.target.value);
   };
 
-  // Handle login submission
+  
   const handleLogin = async () => {
     if (!email || !password) {
       setIsFieldsDirty(true);
@@ -87,7 +87,7 @@ function Login() {
     }
   };
 
-  // Side effects
+  
   useEffect(() => {
     setDebounceState(true);
   }, [userInputDebounce]);

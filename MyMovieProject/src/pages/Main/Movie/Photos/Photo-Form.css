@@ -1,5 +1,5 @@
 .photo-box {
-    background-color: gray;
+    background-color: #003060;
     height: 620px;
     border-radius: 0px 5px 5px 5px;
     display: flex;
@@ -16,7 +16,7 @@
 
 .Photo-Search-Box {
     width: 397px;
-    background-color: rgb(96, 96, 96);
+    background-color: #055c9d;
 }
 
 .Photo-View-Box {
@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: center;
     width: 860px;
-    background-color: rgb(59, 59, 59);
+    background-color: #0e86d4;
 }
 
 .no-photo {
@@ -45,7 +45,7 @@
     margin: 10px;
 }
 
-.card-photo:hover { 
+.card-photo:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -57,7 +57,6 @@
     overflow-y: auto;
     width: 100%;
     height: 100%;
-    padding: 10px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 15px;
@@ -70,12 +69,12 @@
 }
 
 .card-display-photo::-webkit-scrollbar-thumb {
-    background: #888;
     border-radius: 4px;
+    background: linear-gradient(to right, #003060, #055c9d);
 }
 
 .card-display-photo::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: linear-gradient(to right, #003060, #055c9d);
 }
 
 .card-display-photo::-webkit-scrollbar-track {
@@ -90,7 +89,7 @@
 }
 
 .edit-button {
-    background-color: #00ce33;
+    background-color: #003060;
 }
 
 .delete-button {
@@ -107,14 +106,14 @@
 .photo-container-center {
     display: flex;
     justify-content: center;
-    background-image: url('./../../../../utils/images/Phyllis\'s\ Folly.jpg');
+    background: linear-gradient(to right, #003060, #055c9d);
     background-size: cover;
     object-fit: cover;
     background-position: center;
 }
 
 .photo-image-container {
-    background-color: rgb(54, 54, 54);
+    background-color: #68bbe3;
     width: 340px;
     height: 220px;
     border-radius: 10px;
@@ -135,9 +134,11 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    max-width: 400px;
+    max-width: 500px;
     margin: auto;
     padding: 10px;
+    background: linear-gradient(to right, #003060, #055c9d);
+    border-radius: 5px;
 }
 
 .input-group {
@@ -148,7 +149,7 @@
 
 .parent-container {
     border-radius: 10px;
-    background-color: #838383;
+    background-color: #68bbe3;
     margin-top: 10%;
 }
 
@@ -171,8 +172,9 @@
 .clear-btn {
     padding: 3px;
     font-size: 14px;
-    border: 1px solid #ccc;
-    background-color: rgb(233, 233, 233);
+    color: white;
+    border: 1px solid #003060;
+    background: linear-gradient(to right, #003060, #055c9d);
     border-radius: 4px;
     width: 100px;
 }
@@ -181,17 +183,13 @@
     padding: 3px;
     font-size: 14px;
     color: white;
-    border: 1px solid #00df13;
-    background-color: rgb(0, 224, 56);
+    border: 1px solid #003060;
+    background: linear-gradient(to right, #003060, #055c9d);
     border-radius: 4px;
     width: 100px;
 }
 
-.clear-btn:hover {
-    background-color: #d1d1d1;
-}
-
+.clear-btn:hover,
 .edit-save-btn:hover {
-    background-color: rgb(0, 177, 44);
+    background: linear-gradient(to right, #003060, #055c9d);
 }
-

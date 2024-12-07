@@ -14,7 +14,7 @@ const Form = () => {
     const [totalPages, setTotalPages] = useState(0);
     const [pagebtn, setPageBtn] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null); // Error state for displaying error messages
+    const [error, setError] = useState(null); 
     const tabset = JSON.parse(localStorage.getItem('tab'));
     const [tab, setTab] = useState(tabset);
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Form = () => {
     let { id } = useParams();
     const { auth } = useContext(AuthContext);
     const selectorRef = useRef();
-    //const { movie } = useContext(AuthContext);
+    
     const { setMovieInfo } = useContext(AuthContext);
 
 
@@ -59,13 +59,13 @@ const Form = () => {
                 break;
             default:
         }
-        //this will update the tab select on localStorage
+        
         localStorage.setItem('tab', JSON.stringify(tab));
     }
 
     const handleSearch = useCallback(async (page = 1) => {
         setIsLoading(true);
-        setError(null); // Reset error state before the search
+        setError(null); 
         try {
             const response = await axios({
                 method: 'get',
@@ -108,7 +108,7 @@ const Form = () => {
 
         try {
             if (movieId) {
-                // Update existing movie
+                
                 const data = {
                     tmdbId: selectedMovie.id,
                     title: selectedMovie.title,
@@ -137,7 +137,7 @@ const Form = () => {
                     }, 2000);
                     return;
                 }
-                // Create new movie
+                
                 const data = {
                     tmdbId: selectedMovie.id,
                     title: selectedMovie.title,
@@ -198,7 +198,7 @@ const Form = () => {
         <div className="form-box">
             <div className='title-text'>{movieId ? 'Edit ' : 'Adding '} Movie</div>
 
-            {error && <p className="text-center text-danger">{error}</p>} {/* Display error messages */}
+            {error && <p className="text-center text-danger">{error}</p>} {}
 
             {movieId === undefined && (
                 <>
@@ -250,7 +250,7 @@ const Form = () => {
                         </div>
                     </div>
 
-                    {/* Pagination Controls */}
+                    {}
                     {totalPages > 0 && !notfound && pagebtn && (
                         <div className="page-form">
                             <button

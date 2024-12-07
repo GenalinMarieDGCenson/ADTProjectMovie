@@ -5,11 +5,11 @@ import { useDebounce } from '../../../utils/hooks/useDebounce';
 import { useNavigate } from 'react-router-dom';
 
 function ForgotPassword() {
-  // Consolidating form data into one state object
+  
   const [formData, setFormData] = useState({
     email: '',
     newPassword: '',
-    reenterPassword: '',
+    confirmPassword: '', 
   });
   const [isFieldsDirty, setIsFieldsDirty] = useState(false);
   const [debounceState, setDebounceState] = useState(false);
@@ -17,14 +17,14 @@ function ForgotPassword() {
   const [alertMessage, setAlertMessage] = useState('');
   const [isError, setIsError] = useState('failed');
 
-  // Refs for focusing the fields
+  
   const refs = {
     email: useRef(),
     newPassword: useRef(),
-    reenterPassword: useRef(),
+    confirmPassword: useRef(), 
   };
 
-  // Debounced state for form data
+  
   const userInputDebounce = useDebounce(formData, 2000);
   const navigate = useNavigate();
 
@@ -40,15 +40,15 @@ function ForgotPassword() {
   };
 
   const handleResetPassword = async () => {
-    const { email, newPassword, reenterPassword } = formData;
-    if (!newPassword || !reenterPassword) {
+    const { email, newPassword, confirmPassword } = formData; 
+    if (!newPassword || !confirmPassword) { 
       setAlertMessage("Please fill in both password fields.");
       setIsError('failed');
       setTimeout(() => {
         setAlertMessage('');
         setIsError('failed');
       }, 2000);
-    } else if (newPassword !== reenterPassword) {
+    } else if (newPassword !== confirmPassword) { 
       setAlertMessage("Mismatch Password. Please try again.");
       setIsError('failed');
       setStatus('loading');
@@ -96,7 +96,7 @@ function ForgotPassword() {
         <h1 className="text-title-reset"><strong>Reset Password</strong></h1>
         <hr />
         <form className="box-form-reset">
-          {['email', 'newPassword', 'reenterPassword'].map((field, idx) => (
+          {['email', 'newPassword', 'confirmPassword'].map((field, idx) => ( // Updated field name
             <div key={idx}>
               <label htmlFor={field}><strong>{field.replace(/([A-Z])/g, ' $1').toUpperCase()}:</strong></label>
               <input
@@ -123,7 +123,7 @@ function ForgotPassword() {
               className="btn"
               disabled={status === 'loading'}
               onClick={() => {
-                if (formData.email && formData.newPassword && formData.reenterPassword) {
+                if (formData.email && formData.newPassword && formData.confirmPassword) { // Updated field name
                   handleResetPassword();
                 } else {
                   setIsFieldsDirty(true);

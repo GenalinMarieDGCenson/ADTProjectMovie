@@ -11,7 +11,7 @@ const Lists = () => {
     const { auth } = useContext(AuthContext);
 
     const getMovies = useCallback(() => {
-        // Get the movies from the API or database
+        
         axios.get('/movies').then((response) => {
             setListDataMovie(response.data);
         });
@@ -33,7 +33,7 @@ const Lists = () => {
                     },
                 })
                 .then(() => {
-                    // Update list by modifying the movie list array
+                   
                     const tempLists = [...lists];
                     const index = lists.findIndex((movie) => movie.id === id);
                     if (index !== undefined || index !== -1) {
@@ -41,8 +41,7 @@ const Lists = () => {
                         setListDataMovie(tempLists);
                     }
 
-                    // Alternatively, update list by requesting again from the API
-                    // getMovies();
+                    
                 }).catch((err) => {
                     console.log(err);
                 });

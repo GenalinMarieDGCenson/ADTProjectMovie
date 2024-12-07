@@ -40,14 +40,14 @@ function CastForm() {
     getAll(movieId);
   }, [movieId, getAll]);
 
-  //This used for Importing Casts based on tmdbId from Movie
+ 
   function importDataCast() {
     axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
       headers: {
         Accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmU2ODc3NDJmYTRkZWEzMTc3NzdiMWY3ZDgxZDkyNyIsIm5iZiI6MTczMjA3MjIwMS4yNzQsInN1YiI6IjY3M2Q1MzA5NDQzNWU3OGJmYmE3NjE4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uv5x1hENYY4WkAw6XFbSUlcODJFjX293NGUZLebIMUE', // Make sure to replace this with your actual API key
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmU2ODc3NDJmYTRkZWEzMTc3NzdiMWY3ZDgxZDkyNyIsIm5iZiI6MTczMjA3MjIwMS4yNzQsInN1YiI6IjY3M2Q1MzA5NDQzNWU3OGJmYmE3NjE4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uv5x1hENYY4WkAw6XFbSUlcODJFjX293NGUZLebIMUE', 
       },
     }).then((response) => {
       setSaveCastsImp(response.data.cast);
@@ -58,7 +58,7 @@ function CastForm() {
     })
   }
 
-  //Saving all Cast Imported to Database
+ 
   async function setSaveCastsImp(castImportData) {
     await Promise.all(castImportData.map(async (datainfo) => {
       const datacast = {
@@ -100,7 +100,7 @@ function CastForm() {
         url: `https://api.themoviedb.org/3/search/person?query=${query}&include_adult=false&language=en-US&page=${page}`,
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MGY0ZjFlMmNhODQ1ZjA3NWY5MmI5ZDRlMGY3ZTEwYiIsIm5iZiI6MTcyOTkyNjY3NC40NzIwOTksInN1YiI6IjY3MTM3ODRmNjUwMjQ4YjlkYjYxZTgxMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RRJNLOg8pmgYoomiCWKtwkw74T3ZtAs7ZScqxo1bzWg'
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmU2ODc3NDJmYTRkZWEzMTc3NzdiMWY3ZDgxZDkyNyIsIm5iZiI6MTczMjA3MjIwMS4yNzQsInN1YiI6IjY3M2Q1MzA5NDQzNWU3OGJmYmE3NjE4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uv5x1hENYY4WkAw6XFbSUlcODJFjX293NGUZLebIMUE'
         },
       });
 
@@ -201,7 +201,7 @@ function CastForm() {
     };
 
     if (!validateFields()) {
-      return; // This is for stop if any valid is null
+      return; 
     } else {
       const isConfirm = window.confirm("Are you sure you want to update the cast?");
       if (isConfirm) {

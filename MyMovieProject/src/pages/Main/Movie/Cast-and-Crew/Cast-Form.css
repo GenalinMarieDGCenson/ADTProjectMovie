@@ -1,5 +1,5 @@
 .cast-box {
-  background-color: gray;
+  background-color: #003060;
   height: 620px;
   border-radius: 0px 5px 5px 5px;
   display: flex;
@@ -16,25 +16,21 @@
 
 .parent-container {
   border-radius: 10px;
-  background-color: #838383;
   margin-top: 10%;
+  background: linear-gradient(to right, rgba(249, 249, 249, 0.8), rgba(5, 92, 157, 0.8)); 
 }
+
 
 .Cast-View-Box {
   position: relative;
   display: flex;
-  flex-direction: row; /* Ensure images are on the left and text on the right */
-  justify-content: flex-start; /* Align images to the left */
+  background-color: rgba(5, 92, 157, 0.8); 
+  width: 860px;
 }
 
 .Search-Box {
   width: 397px;
-  background-color: rgb(96, 96, 96);
-}
-
-.Cast-View-Box {
-  width: 860px;
-  background-color: rgb(59, 59, 59);
+  background-color: #0e86d4;
 }
 
 .card {
@@ -73,12 +69,12 @@
 }
 
 .card-display-cast::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #003060;
   border-radius: 4px;
 }
 
 .card-display-cast::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #055c9d;
 }
 
 .card-display-cast::-webkit-scrollbar-track {
@@ -108,7 +104,7 @@
 }
 
 .image-container {
-  background-color: rgb(54, 54, 54);
+  background-color: #68bbe3;
   width: 200px;
   height: 280px;
   border-radius: 10px;
@@ -116,7 +112,6 @@
   justify-content: center;
   align-items: center;
   margin: 10px;
-  order: 1; /* Ensures images appear on the left */
 }
 
 .cast-detail-box {
@@ -126,7 +121,7 @@
 .image-container-center {
   display: flex;
   justify-content: center;
-  background-image: url('./../../../../utils/images/Phyllis\'s\ Folly.jpg');
+  background: linear-gradient(to right, #003060, #055c9d);
   background-size: cover;
   object-fit: cover;
   background-position: center;
@@ -177,8 +172,9 @@ label {
 .back-btn {
   padding: 3px;
   font-size: 14px;
-  border: 1px solid #ccc;
-  background-color: rgb(233, 233, 233);
+  color: white;
+  border: 1px solid #003060;
+  background: linear-gradient(to right, #003060, #055c9d);
   border-radius: 4px;
   width: 100px;
 }
@@ -187,8 +183,8 @@ label {
   padding: 3px;
   font-size: 14px;
   color: white;
-  border: 1px solid #00df13;
-  background-color: rgb(0, 224, 56);
+  border: 1px solid #003060;
+  background: linear-gradient(to right, #003060, #055c9d);
   border-radius: 4px;
   width: 100px;
 }
@@ -196,8 +192,8 @@ label {
 .save-button {
   padding: 3px;
   font-size: 14px;
-  border: 1px solid #00ce33;
-  background-color: rgb(0, 218, 29);
+  border: 1px solid #003060;
+  background: linear-gradient(to right, #003060, #055c9d);
   border-radius: 4px;
   width: 60px;
   color: white;
@@ -206,28 +202,28 @@ label {
 .btn-importer {
   padding: 3px;
   font-size: 14px;
-  border: 1px solid #52ca70;
-  background-color: rgb(82, 224, 101);
+  border: 1px solid #003060;
+  background: linear-gradient(to right, #003060, #055c9d);
   border-radius: 4px;
   width: 115px;
   color: white;
 }
 
 .save-button:hover {
-  background-color: rgb(0, 184, 24);
+  background: linear-gradient(to right, #003060, #055c9d);
 }
 
 .button-search:hover,
 .back-btn:hover {
-  background-color: #d1d1d1;
+  background: linear-gradient(to right, #003060, #055c9d);
 }
 
 .edit-btn:hover {
-  background-color: rgb(0, 177, 44);
+  background: linear-gradient(to right, #003060, #055c9d);
 }
 
 .btn-importer:hover {
-  background-color: rgb(44, 180, 78);
+  background: linear-gradient(to right, #003060, #055c9d);
 }
 
 .edit-back-btn {
@@ -266,5 +262,5 @@ label {
   font-size: 0.9rem;
   white-space: nowrap;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

@@ -1,11 +1,10 @@
-/* Center the .Login-Form */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
     margin: 0;
-    background: #222121; /* Optional background color */
+    background: linear-gradient(to right, #003060, #055c9d, #0e86d4, #68bbe3); /* Gradient using all the colors */
 }
 
 .Login-Form {
@@ -13,7 +12,7 @@ body {
     height: auto;
     padding: 20px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.6); 
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -58,8 +57,8 @@ body {
 
 .Login-Form .box-form input:focus {
     outline: none;
-    border: 1px solid #6a11cb;
-    box-shadow: 0px 0px 8px rgba(106, 17, 203, 0.5);
+    border: 1px solid #68bbe3; 
+    box-shadow: 0px 0px 8px rgba(104, 187, 227, 0.5);
 }
 
 .Login-Form .form-check {
@@ -89,11 +88,11 @@ body {
 }
 
 .forgotpassword-login:hover {
-    color: #48465a;
+    color: #003060; 
 }
 
 .Login-Form .btn {
-    background: linear-gradient(to right, #612d2d, #ff0015);
+    background: linear-gradient(to right, #003060, #055c9d); 
     color: #ffffff;
     padding: 12px 20px;
     border: none;
@@ -105,7 +104,7 @@ body {
 }
 
 .Login-Form .btn:hover {
-    background: linear-gradient(to right, #612d2d, #ff0015);
+    background: linear-gradient(to right, #003060, #055c9d);
     transform: translateY(-3px);
 }
 
@@ -116,13 +115,13 @@ body {
 
 .Login-Form .text-center a {
     font-size: 0.85rem;
-    color: #ff0b2fc9;
+    color: #0e86d4; 
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .Login-Form .text-center a:hover {
-    color: #d23b52c9;
+    color: #68bbe3; 
 }
 
 .text-danger-login {
@@ -162,7 +161,7 @@ body {
 
     .Login-Form p.text-description {
         font-size: 0.8rem;
-        color: #3d2424;
+        color: #055c9d;
         margin-bottom: 20px;
     }
 
@@ -184,7 +183,7 @@ body {
     }
 
     .Login-Form .text-center a:hover {
-        color: #6a11cb;
+        color: #68bbe3;
     }
 
     .text-danger-login {
