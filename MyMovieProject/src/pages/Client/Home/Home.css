@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(41, 43, 52);
+  background-color: #003060;
 }
 
 .main-container {
@@ -43,7 +43,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #055c9d;
   color: white;
   font-size: 18px;
   text-align: center;
@@ -87,7 +87,7 @@ body {
   height: 100%;
   padding: 70px;
   display: flex;
-  background-color: rgba(53, 58, 63, 0.8);
+  background-color: rgba(0, 48, 96, 0.8);
 }
 
 .Title-Description-Box {
@@ -111,13 +111,13 @@ body {
 }
 
 .img-postpath-auto:hover {
-  box-shadow: 2px 4px 6px #627f98;
+  box-shadow: 2px 4px 6px #0e86D4;
 }
 
 .title-text-movie-lists {
   font-size: 30pt;
   text-align: center;
-  color: white;
+  color: #68BBe3;
 }
 
 @media (max-width: 990px) {

@@ -75,14 +75,14 @@ function VideoForm() {
     return true;
   };
 
-  //This used for Importing Videos based on tmdbId from Movie
+  
   function importDataVideo() {
     axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
       headers: {
         Accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmU2ODc3NDJmYTRkZWEzMTc3NzdiMWY3ZDgxZDkyNyIsIm5iZiI6MTczMjA3MjIwMS4yNzQsInN1YiI6IjY3M2Q1MzA5NDQzNWU3OGJmYmE3NjE4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uv5x1hENYY4WkAw6XFbSUlcODJFjX293NGUZLebIMUE', // Make sure to replace this with your actual API key
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5MmU2ODc3NDJmYTRkZWEzMTc3NzdiMWY3ZDgxZDkyNyIsIm5iZiI6MTczMjA3MjIwMS4yNzQsInN1YiI6IjY3M2Q1MzA5NDQzNWU3OGJmYmE3NjE4YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Uv5x1hENYY4WkAw6XFbSUlcODJFjX293NGUZLebIMUE', 
       },
     }).then((response) => {
       setSavePhotosImp(response.data.results);
@@ -93,7 +93,7 @@ function VideoForm() {
     })
   }
 
-  //Saving all Video Imported to Database
+  
   async function setSavePhotosImp(vidoeImportData) {
     await Promise.all(vidoeImportData.map(async (datainfo) => {
       const datavideo = {
@@ -158,7 +158,7 @@ function VideoForm() {
 
 
     if (!validateFields()) {
-      return; // This is for stop if any valid is null
+      return; 
     } else {
       try {
         const dataphoto = {
@@ -271,7 +271,7 @@ function VideoForm() {
     };
 
     if (!validateFields()) {
-      return; // This is for stop if any valid is null
+      return; 
     } else {
       const isConfirm = window.confirm("Are you sure you want to update the Video?");
       if (isConfirm) {

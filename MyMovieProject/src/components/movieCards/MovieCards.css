@@ -1,7 +1,7 @@
 .card-movie {
   max-width: 181px;
-  border: 20px solid #4f4f60;
-  background-color: #4f4f60;
+  border: 20px solid #003060; 
+  background-color: #003060; 
   border-radius: 10px;
   color: white;
   text-align: center;
@@ -25,6 +25,6 @@
 }
 
 .card-movie:hover {
-  border: 20px solid #373745;
-  background-color: #373745;
+  border: 20px solid #055c9d; 
+  background-color: #055c9d; 
 }

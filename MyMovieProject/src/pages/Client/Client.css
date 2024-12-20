@@ -2,6 +2,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    background-color: #003060;
 }
 
 .box {
@@ -25,7 +26,7 @@ body {
 
 header {
     grid-area: head;
-    background-color: #343a40;
+    background-color: #055c9d;
     transform: translateY(-100%);
     transition: transform 0.5s ease-in-out;
     display: flex;
@@ -42,7 +43,7 @@ article {
 
 .sidebar {
     position: absolute;
-    background-color: #45525f;
+    background-color: #0e86D4;
     padding: 10px;
     width: 185px;
     top: 0;
@@ -54,7 +55,7 @@ article {
 }
 
 .close-sidebar {
-    background-color: #2f3841;
+    background-color: #68bbe3;
     color: white;
     border: none;
     width: 25px;
@@ -66,12 +67,12 @@ article {
 }
 
 .close-sidebar:hover {
-    background-color: #232b34;
+    background-color: #055c9d;
 }
 
-.cover-sidebar{
+.cover-sidebar {
     position: absolute;
-    background-color: rgba(63, 63, 63, 0.6);
+    background-color: rgba(0, 48, 96, 0.6);
     width: 100%;
     height: 100%;
     visibility: hidden;
@@ -80,7 +81,7 @@ article {
 
 footer {
     grid-area: foot;
-    background-color: #343a40;
+    background-color: #055c9d;
     transform: translateY(100%);
     transition: transform 0.5s ease-in-out;
 }
@@ -101,7 +102,7 @@ footer {
     height: 50px;
     width: 60px;
     margin-right: -9px;
-    background-color: #343a40;
+    background-color: #055c9d;
     transition: background-color 0.3s ease;
     border-radius: 10px;
     display: flex;
@@ -110,7 +111,7 @@ footer {
 }
 
 .button:hover {
-    background-color: rgb(218, 218, 218);
+    background-color: #68bbe3;
 }
 
 .button-container {
@@ -126,16 +127,13 @@ footer {
 }
 
 .button:hover .divnav {
-    background-color: #343a40;
+    background-color: #003060;
 }
 
 .title-text {
     color: white;
     font-size: 24px;
     user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
     cursor: pointer;
 }
 
@@ -147,9 +145,6 @@ footer {
     left: 0;
     text-align: center;
     user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
 }
 
 .size-font {
@@ -160,25 +155,32 @@ footer {
     .size-font {
         font-size: 9pt;
     }
+
     .name-user {
         font-size: 11pt;
     }
+
     .role-user {
         font-size: 10pt;
     }
+
     .photo-user-img {
         width: 80px;
         height: 80px;
     }
+
     .sidebar {
         width: 160px;
     }
+
     .nav-user .logout-user {
         width: 160px !important;
     }
+
     .nav-user .Movies-user {
         width: 160px !important;
     }
+
     .space-from-name-nav {
         margin-top: -10px;
     }
@@ -232,7 +234,7 @@ footer {
     width: 181px;
     text-align: center;
     cursor: pointer;
-    background-color: #45525f;
+    background-color: #0e86D4;
     border-radius: 5px;
 }
 
@@ -240,16 +242,16 @@ footer {
     width: 181px;
     text-align: center;
     cursor: pointer;
-    background-color: #45525f;
+    background-color: #0e86D4;
     border-radius: 5px;
 }
 
 .nav-user .Movies-user:hover {
-    box-shadow: 2px 4px 6px #31373c;
+    box-shadow: 2px 4px 6px #68bbe3;
 }
 
 .nav-user .logout-user:hover {
-    box-shadow: 2px 4px 6px #31373c;
+    box-shadow: 2px 4px 6px #68bbe3;
 }
 
 .nav-user a {
@@ -263,8 +265,8 @@ footer {
 }
 
 .nav-user a:hover {
-    background-color: #343a40;
-    color: rgb(218, 218, 218);
+    background-color: #003060;
+    color: #68bbe3;
 }
 
 .spacing-text {
